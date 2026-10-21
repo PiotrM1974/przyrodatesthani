@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Słodka Akademia Przyrody Hani - Test 🌸</title>
+<style>
+:root{
+    --bg: #fff0f5; 
+    --card: #ffffff; 
+    --tx: #4a3b4c; 
+    --mu: #8c7890; 
+    --ok: #e6f7ec; 
+    --okb: #38b06e; 
+    --no: #fff5e6; 
+    --nob: #f29e38; 
+    --fs: 20px;
+    --primary: #ff6584;
+    --primary-hover: #ff476f;
+    --bubble-bg: #ffe3eb;
+}
+@media(prefers-color-scheme:dark){
+    :root{
+        --bg:#221a24;
+        --card:#2e2332;
+        --tx:#fce8ef;
+        --mu:#b8a2bd;
+        --ok:#1b3826;
+        --okb:#43c57e;
+        --no:#422a15;
+        --nob:#f5b041;
+        --primary:#ff6584;
+        --primary-hover:#ff859d;
+        --bubble-bg:#3d242c;
+    }
+}
+*{box-sizing:border-box}
+body{
+    margin:0;
+    background: var(--bg);
+    color: var(--tx);
+    font: var(--fs)/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-image: radial-gradient(var(--primary) 0.75px, transparent 0.75px);
+    background-size: 30px 30px;
+}
+main,header{max-width:720px;margin:0 auto;padding:16px}
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background: var(--card);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(255, 101, 132, 0.15);
+    margin-top: 16px;
+    border: 2px solid var(--bubble-bg);
+}
+header b {
+    color: var(--primary);
+    font-size: 1.25em;
+}
+h2{margin:.4em 0; color: var(--primary);}
+h3{margin:.3em 0}
+.mu{color:var(--mu);font-size:.9em}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#app { animation: fadeInUp 0.4s ease-out; }
+
+.b{
+    display:block;
+    width:100%;
+    min-height:58px;
+    margin:12px 0;
+    padding:14px 20px;
+    font:inherit;
+    text-align:left;
+    background:var(--card);
+    color:var(--tx);
+    border:3px solid var(--bubble-bg);
+    border-radius:18px;
+    cursor:pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.b:hover { border-color: var(--primary); transform: translateY(-2px) scale(1.01); }
+.b small{display:block;color:var(--mu); margin-top: 2px;}
+.opt.sel{border-color:var(--primary);background:var(--bubble-bg); transform: scale(1.01);}
+.good{border-color:var(--okb)!important;background:var(--ok)!important}
+.bad{border-color:var(--nob)!important;background:var(--no)!important}
+
+.go{
+    background: linear-gradient(135deg, var(--primary), #ff8da1);
+    color:#fff;
+    border-color:transparent;
+    text-align:center;
+    font-weight: bold;
+    box-shadow: 0 6px 20px rgba(255, 101, 132, 0.4);
+    border-radius: 18px;
+}
+.go:hover { background: linear-gradient(135deg, var(--primary-hover), var(--primary)); transform: translateY(-2px); }
+.go:disabled{opacity:.4;cursor:default; transform: none; box-shadow: none;}
+
+.s{
+    font:inherit;
+    font-size:.85em;
+    padding:8px 14px;
+    margin:6px 6px 6px 0;
+    background:var(--card);
+    color:var(--tx);
+    border:2px solid var(--bubble-bg);
+    border-radius:14px;
+    cursor:pointer;
+    transition: all 0.2s;
+}
+.s:hover { border-color: var(--primary); transform: scale(1.05); }
+
+.fb{
+    padding:12px 18px 16px;
+    border-radius:16px;
+    border-left:6px solid;
+    margin:16px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    animation: fadeInUp 0.3s ease-out;
+}
+.fb.ok{background:var(--ok);border-color:var(--okb)}
+.fb.no{background:var(--no);border-color:var(--nob)}
+
+.pr{
+    height:14px;
+    background:var(--card);
+    border-radius:7px;
+    overflow:hidden;
+    border:2px solid var(--bubble-bg);
+    margin-bottom: 16px;
+}
+.pr div{
+    height:100%;
+    background: linear-gradient(90deg, var(--primary), #ffb1c1);
+    border-radius: 5px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#app {
+    background: var(--card);
+    border-radius: 24px;
+    padding: 24px;
+    margin-top: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 2px solid var(--bubble-bg);
+}
+button:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+</style></head><body>
+<header>
+    <div style="display:flex; align-items:center; gap:8px;">
+        <span style="font-size: 1.5rem;">🌸</span>
+        <b>Słodka Przyroda - Test</b>
+    </div>
+    <span>
+        <button class="s" onclick="fs(-2)" aria-label="Mniejszy tekst">A−</button>
+        <button class="s" onclick="fs(2)" aria-label="Większy tekst">A+</button>
+    </span>
+</header>
+<main id="app"></main>
+<script>
+let audioCtx = null;
+function initAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+function playSound(type) {
+    try {
+        initAudio();
+        if (!audioCtx) return;
+        const now = audioCtx.currentTime;
+        if (type === 'success') {
+            [523.25, 659.25, 783.99, 1046.50].forEach((freq, idx) => {
+                const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+                osc.type = 'triangle'; osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+                gain.gain.setValueAtTime(0.15, now + idx * 0.08);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.3);
+                osc.connect(gain); gain.connect(audioCtx.destination);
+                osc.start(now + idx * 0.08); osc.stop(now + idx * 0.08 + 0.3);
+            });
+        } else if (type === 'error') {
+            const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+            osc.type = 'sine'; osc.frequency.setValueAtTime(220, now);
+            osc.frequency.exponentialRampToValueAtTime(150, now + 0.25);
+            gain.gain.setValueAtTime(0.15, now); gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(now); osc.stop(now + 0.25);
+        } else if (type === 'click') {
+            const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+            osc.type = 'sine'; osc.frequency.setValueAtTime(400, now);
+            gain.gain.setValueAtTime(0.05, now); gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(now); osc.stop(now + 0.05);
+        }
+    } catch(e) {}
+}
+
+const L=["Co to jest przyroda?","Sposób na naukę","Ekran i internet","Badam przyrodę","Myślę i działam jak przyrodnik","Mikroskop","Kompas"];
+const Q=[
+[0,"Co to jest przyroda?",["Wszystko, co nas otacza i nie zostało stworzone przez człowieka","Wszystko, co stworzył człowiek","Tylko rośliny i zwierzęta"],0,"Przyroda to wszystko, co nas otacza i czego nie stworzył człowiek. Są w niej nie tylko rośliny i zwierzęta, ale też woda, powietrze, Słońce i skały. Budynki, drogi i mosty zrobił człowiek, więc nie są przyrodą."],
+[0,"Który element jest ożywiony (jest organizmem)?",["Skała","Chmura","Grzyb","Most"],2,"Organizmy oddychają, odżywiają się, rosną, rozmnażają się i rozwijają. Grzyb jest organizmem. Skała i chmura są nieożywione, a most zbudował człowiek."],
+[0,"Który element należy do przyrody, ale jest nieożywiony?",["Chmura","Płot","Motyl","Drzewo"],0,"Chmura jest częścią przyrody, ale nie żyje: nie rośnie i nie rozmnaża się. Płot zrobił człowiek, a motyl i drzewo to organizmy."],
+[0,"W czasie sztormu fale mocno uderzają o brzeg. Co to oznacza?",["Woda jest ożywiona, bo się porusza","Woda jest nieożywiona, a w ruch wprawia ją wiatr","Woda jest ożywiona, bo gniewa się jak ludzie"],1,"Sam ruch nie oznacza życia. Elementy nieożywione nie potrafią same się poruszać, ale coś może wprawić je w ruch. Tu robi to wiatr. Woda nie oddycha, nie rośnie i nie rozmnaża się, więc jest nieożywiona."],
+[0,"Jakie są główne źródła wiedzy o przyrodzie wymienione w podręczniku?",["Tylko telewizja i komputery","Obserwacje i doświadczenia, podręczniki, atlasy, filmy, ogrody zoologiczne i botaniczne","Tylko rozmowy z kolegami w szkole"],1,"Wiedzę o przyrodzie czerpiemy z wielu źródeł: obserwacji, doświadczeń, książek, filmów internetowych, a także odwiedzając zoo, ogrody botaniczne i parki narodowe."],
+[1,"Co pomaga skupić się na nauce?",["Włączony telewizor","Cisza i spokój","Robienie kilku rzeczy naraz"],1,"Łatwiej uczyć się w ciszy. Telewizor jest rozpraszaczem, a robienie kilku rzeczy naraz utrudnia skupienie."],
+[1,"Ile godzin snu potrzebują dzieci w wieku czwartoklasisty?",["5–6 godzin","9–11 godzin","14–15 godzin"],1,"Według podręcznika dzieci w tym wieku potrzebują 9–11 godzin snu. Gdy się wyśpisz, mózg uczy się szybciej. Przy zbyt krótkim śnie mózg nie odpoczywa i działa wolniej."],
+[1,"Po ilu minutach nauki warto zrobić krótką przerwę?",["Po 2 minutach","Po 20–30 minutach","Dopiero po 3 godzinach"],1,"Krótka przerwa po 20–30 minutach daje mózgowi czas na regenerację. Po 2 minutach jest za wcześnie, a po 3 godzinach mózg jest już bardzo zmęczony."],
+[1,"Uczysz się przy włączonym filmie. Co się dzieje?",["Uczę się szybciej","Trudniej mi się skupić i potrzebuję więcej czasu","Nic się nie zmienia"],1,"To wielozadaniowość, czyli robienie kilku rzeczy jednocześnie. Mózg nie skupia się dobrze na dwóch rzeczach naraz, więc nauka trwa dłużej."],
+[1,"Które miejsce do nauki jest dobre?",["Biurko z bałaganem i telefonem obok","Stałe miejsce, porządek, wygodne krzesło i dobre światło","Łóżko w ciemnym pokoju"],1,"Stałe miejsce: rzeczy są zawsze pod ręką. Porządek: nie tracisz czasu na szukanie, a bałagan rozprasza. Wygodne krzesło dopasowane do wzrostu: siedzisz prosto. Dobre światło (lampa z góry i z boku): oczy się nie męczą."],
+[2,"Na czym polega uzależnienie od internetu?",["Korzystam z internetu godzinę dziennie","Ciągle z niego korzystam, nawet gdy wiem, że to mi szkodzi","Lubię oglądać filmy o przyrodzie"],1,"Uzależnienie to ciągłe korzystanie z internetu, nawet jeśli wiemy, że szkodzi zdrowiu i relacjom z ludźmi. Samo korzystanie przez krótki czas albo oglądanie filmów nie jest uzależnieniem."],
+[2,"Który z nich jest sygnałem ostrzegawczym?",["Odkładam telefon bez problemu","Czuję niepokój, gdy nie mam telefonu pod rączką","Spotykam się z koleżankami na żywo"],1,"Lęk bez smartfona to jeden z sygnałów ostrzegawczych. Inne to: ciągłe bycie online, spędzanie prawie całego czasu w sieci i złość, gdy rodzice ograniczają czas przed ekranem."],
+[2,"Co pomaga mądrze korzystać z internetu?",["Odłożyć telefon na godzinę przed snem","Trzymać telefon pod poduszką","Korzystać z niego, aż zasnę"],0,"Odłożenie telefonu godzinę przed zaśnięciem pozwala mózgowi odpocząć i przygotować się do snu. Warto też ustalić limit czasu, wyciszyć powiadomienia na noc i spotykać się z ludźmi na żywo."],
+[2,"Musisz mieć stały dostęp do internetu, nawet na wakacjach, i w nowym miejscu od razu pytasz o hasło do wi-fi. Co to może oznaczać?",["To sygnał ostrzegawczy: ciągłe bycie online","To dowód, że dobrze się uczę","To nic nie znaczy"],0,"To jeden z sygnałów ostrzegawczych, czyli rzeczy, na które warto zwrócić uwagę. Nazywa się „Zawsze online”."],
+[2,"Złościsz się, gdy rodzice próbują ograniczyć Ci czas przed ekranem. Co to może oznaczać?",["To sygnał ostrzegawczy: złość na ograniczenia","Ekran bardzo dobrze mi robi","Czas przed ekranem trzeba wydłużyć"],0,"To znak, że warto spokojnie porozmawiać z rodzicami i razem ustalić zasady, np. godzinę dziennie."],
+[2,"Najbardziej przejmujesz się liczbą polubień i wyświetleń pod swoimi postami i smucisz się, gdy jest ich mało. Co to jest?",["Sygnał ostrzegawczy: najważniejsza jest opinia w sieci","Sposób na lepszą naukę","Skutek zbyt długiego snu"],0,"Gdy liczby w sieci stają się bardzo ważne, to sygnał ostrzegawczy. Polubienia nie mówią, ile jesteś warta."],
+[2,"Który jest możliwym skutkiem zbyt długiego przebywania w sieci?",["Słaba kondycja i zgarbiona sylwetka","Lepszy, głębszy sen","Łatwiejsze zapamiętywanie"],0,"Przy ekranie spędzamy wiele godzin w tej samej pozycji i mało się ruszamy. Dlatego mogą boleć plecy i szyja."],
+[2,"Dlaczego tak trudno oderwać się od telefonu?",["Aplikacje są często projektowane tak, żeby użytkownik chciał do nich wracać","Telefon jest bardzo ciężki","Każdy ma słabą wolę"],0,"Kolory, dźwięki i powiadomienia mają przykuwać uwagę na dłuższy czas, a nie przez słabą wolę."],
+[2,"Które zdanie opisuje możliwy skutek zbyt długiego korzystania z internetu?",["Coraz rzadziej rozmawia się z innymi twarzą w twarz","Łatwiej jest nawiązywać znajomości","Rano jest więcej energii"],0,"Podręcznik nazywa to „unikaniem kontaktów”: gdy większość czasu spędza się w sieci, rzadziej rozmawia się z ludźmi na żywo."],
+[3,"Co robimy podczas obserwacji?",["Wpływamy na to, co badamy","Nie wpływamy: patrzymy, słuchamy, wąchamy, dotykamy","Zawsze coś zmieniamy i sprawdzamy skutek"],1,"W obserwacji w żaden sposób nie wpływamy na to, co obserwujemy."],
+[3,"Który narząd zmysłu znajduje się nie tylko na głowie?",["Oko","Ucho","Skóra","Nos"],2,"Skóra jest narządem dotyku i pokrywa całe ciało."],
+[3,"Jaką drogę pokonuje informacja odebrana z otoczenia?",["Narząd zmysłu → mózg → mięsień","Mózg → narząd zmysłu → mięsień","Mięsień → mózg → narząd zmysłu"],0,"Najpierw narząd zmysłu odbiera informację, potem mózg ją analizuje, a na końcu wysyła sygnał do mięśni."],
+[3,"Czym sprawdzisz, ile waży jabłko?",["Termometrem","Wagą","Taśmą miernicza"],1,"Waga pokazuje, ile coś waży."],
+[3,"Czym zobaczysz ptaki w koronach drzew?",["Lupą","Mikroskopem","Lornetką"],2,"Lornetka służy do oglądania obiektów położonych daleko."],
+[3,"Jak widzimy w ciemności?",["Lepiej niż w świetle","Tak samo jak w świetle","Gorzej niż w świetle"],2,"Widzimy tylko wtedy, gdy do oczu dociera światło."],
+[4,"Czym jest hipoteza?",["Pytaniem, na które szukamy odpowiedzi","Prawdopodobną odpowiedzią na pytanie badawcze","Wyjaśnieniem wyników doświadczenia"],1,"Hipoteza to prawdopodobna odpowiedź na pytanie badawcze."],
+[4,"Jaka jest kolejność etapów doświadczenia?",["Hipoteza, wniosek, pytanie, wyniki, plan","Pytanie badawcze, hipoteza, plan i przeprowadzenie, wyniki, wniosek","Wniosek, plan, wyniki, hipoteza, pytanie"],1,"Najpierw pytanie badawcze, potem hipoteza, plan i przeprowadzenie, wyniki, a na końcu wniosek."],
+[4,"Czym powinny różnić się badane próby?",["Tylko jednym czynnikiem, który badamy","Jak największą liczbą rzeczy","Niczym"],0,"Jeśli zmienisz kilka rzeczy naraz, nie dowiesz się, co wpłynęło na wynik."],
+[4,"Dlaczego każdą próbę powtarzamy kilka razy?",["Żeby uniknąć przypadkowych błędów","Żeby doświadczenie trwało dłużej","Żeby było ciekawiej"],0,"Gdy wynik się powtarza, wiemy, że nie był przypadkiem."],
+[4,"Dziewczynka bada wpływ światła na nasiona słonecznika. Połowę wysiewa w ogródku, a połowę na wacie w ciemnej piwnicy. Jaki błąd popełniła?",["Wzięła za mało nasion","Próby różnią się nie tylko światłem, ale też miejscem i podłożem","Nie zapisała wyników"],1,"Próby mają różnić się tylko jednym czynnikiem, a tu zmieniono światło, podłoże i miejsce."],
+[4,"Co oznacza znak ostrzegawczy z czaszką i piszczelami?",["Substancja łatwopalna","Substancja toksyczna (trująca)","Substancja żrąca"],1,"Czaszka z piszczelami oznacza substancję toksyczną (trującą)."],
+[4,"Co jest ważne podczas doświadczeń?",["Spróbować substancji, żeby je poznać","Słuchać poleceń nauczyciela i niczego nie jeść, nie pić ani nie wąchać","Używać sprzętu bez pytania"],1,"Niczego nie jedz, nie pij ani nie wąchaj podczas doświadczeń."],
+[5,"Obiektyw ma powiększenie 15×, a okular 10×. Ile razy powiększa mikroskop?",["15 razy","150 razy","1500 razy"],1,"Powiększenie = obiektyw razy okular (15 · 10 = 150)."],
+[5,"Do czego służy rewolwer w mikroskopie?",["Do zmiany obiektywu","Do ustawiania dokładnej ostrości","Do oświetlania preparatu"],0,"Rewolwer w mikroskopie umożliwia zmianę obiektywu."],
+[5,"Którą śrubą ustawiasz dokładną ostrość obrazu?",["Makrometryczną","Mikrometryczną","Rewolwerem"],1,"Śruba mikrometryczna ustawia dokładną ostrość obrazu."],
+[5,"Dlaczego obserwację zaczynasz od obiektywu o najmniejszym powiększeniu?",["Bo dzięki temu szybciej odszukam obiekt","Bo większe powiększenia są zepsute","Bo tak jest ładniej"],0,"Przy najmniejszym powiększeniu łatwiej i szybciej znajdziesz obiekt w polu widzenia."],
+[6,"Który koniec igły magnetycznej kompasu wskazuje północ?",["Czerwony","Srebrny","Oba na raz"],0,"Czerwony koniec igły zawsze wskazuje kierunek północny."],
+[6,"Który z kierunków jest kierunkiem pośrednim?",["Północ","Zachód","Północny zachód","Południe"],2,"Północny zachód to kierunek pośredni. Północ, południe i zachód to kierunki główne."],
+[6,"Podróżnik szedł na północny wschód, zorientował się, że to zła trasa, i zawrócił. W którym kierunku poszedł?",["Na południe","Na południowy zachód","Na zachód","Na południowy wschód"],1,"Przeciwieństwem północnego wschodu (NE) jest południowy zachód (SW)."],
+[6,"Kowboj jedzie w stronę zachodzącego Słońca. W którym kierunku się porusza?",["Na północ","Na południe","Na wschód","Na zachód"],3,"Słońce zachodzi na zachodzie (W)."],
+[6,"Stoisz tyłem do Słońca w południe i rozkładasz ręce. Gdzie jest wschód?",["Po lewej stronie","Po prawej stronie","Przed Tobą","Za plecami"],1,"Wschód jest po prawej stronie, gdy w południe stoimy tyłem do Słońca."],
+[4,"Lena zauważyła, że liście kwiatu na parapecie są zwrócone ku szybie. Odwróciła doniczkę, zapisała datę i przypuszczenie, że liście znów skręcą się ku oknu, i postanowiła obserwować kwiat dwa tygodnie. Jaki rodzaj badania rozpoczęła?",["Obserwację","Doświadczenie"],1,"To doświadczenie, bo Lena zmieniła jeden czynnik i sprawdza wynik."],
+[3,"Róża zauważyła w malinach pająka. Chce zobaczyć, czy na jego ciele są małe włoski, i sprawdzić, jak jest zbudowana sieć. Którego przyrządu potrzebuje?",["Lupy","Mikroskopu","Wagi"],0,"Lupa powiększa trudne do zaobserwowania szczegóły z bliska."],
+[3,"Ola ma kotka, który rośnie wolniej niż rodzeństwo. Musi sprawdzać, czy kotek nie chudnie. Którego przyrządu potrzebuje?",["Wagi","Termometru","Kompasu"],0,"Waga służy do sprawdzania ciężaru."],
+[3,"Ola musi kontrolować, ile mleka z butelki wypił kotek. Którego przyrządu użyje do odmierzenia mleka?",["Zlewki","Lornetki","Taśmy mierniczej"],0,"Zlewka służy do odmierzania objętości płynów."]
+];
+
+const $=id=>document.getElementById(id);
+const K=i=>Q[i][1];
+let S={ok:{},hard:{},fs:20},R,sel=null;
+try{Object.assign(S,JSON.parse(localStorage.getItem("hania-przyroda-test")||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem("hania-przyroda-test",JSON.stringify(S))}catch(e){}};
+const btn=(t,f)=>'<button class="b" onclick="'+f+'">'+t+'</button>';
+function fs(d){S.fs=Math.min(30,Math.max(16,S.fs+d));document.documentElement.style.setProperty("--fs",S.fs+"px");save()}
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="pl-PL";speechSynthesis.speak(u)}catch(e){}}
+function menu(){
+ let h='<h2>Co chcesz powtórzyć?</h2><p class="mu">Bez limitu czasu i bez ocen. Przy każdej odpowiedzi zobaczysz wyjaśnienie.</p>';
+ h+=btn("Wszystkie pytania ("+Q.length+")","go(-1)");
+ L.forEach((n,l)=>{const ids=Q.map((q,i)=>i).filter(i=>Q[i][0]==l),d=ids.filter(i=>S.ok[K(i)]).length;
+  h+=btn((l+1)+". "+n+"<small>opanowane: "+d+" z "+ids.length+"</small>","go("+l+")")});
+ const hd=Object.keys(S.hard).length;
+ if(hd)h+=btn("Pytania do powtórki ("+hd+")","go(-2)");
+ $("app").innerHTML=h}
+function go(l){
+ const ids=Q.map((q,i)=>i).filter(i=>l==-1||(l==-2?S.hard[K(i)]:Q[i][0]==l));
+ if(!ids.length)return;
+ R={q:ids,p:0,a:{},w:[],ok:0,n:ids.length};ask()}
+function ask(){
+ const i=R.q[R.p],q=Q[i];sel=null;
+ $("app").innerHTML='<div class="pr"><div style="width:'+(R.p/R.q.length*100)+'%"></div></div>'+
+ '<p class="mu">Pytanie '+(R.p+1)+' z '+R.q.length+(R.a[i]?" (powtórka)":"")+" · "+L[q[0]]+'</p><h2>'+q[1]+'</h2>'+
+ '<button class="s" onclick="say(Q['+i+'][1])">🔊 Przeczytaj pytanie</button><div>'+
+ q[2].map((o,k)=>'<button class="b opt" onclick="pick('+k+')">'+"ABCD"[k]+". "+o+'</button>').join("")+
+ '</div><div id="f"><button class="b go" id="chk" disabled onclick="check()">Sprawdź</button></div>'+
+ '<p><button class="s" onclick="menu()">Zakończ i wróć do menu</button></p>';
+ window.scrollTo(0,0)}
+function pick(k){
+ sel=k; playSound('click');
+ document.querySelectorAll(".opt").forEach((b,j)=>b.classList.toggle("sel",j==k));
+ $("chk").disabled=false;
+}
+function check(){
+ const i=R.q[R.p],q=Q[i],c=sel==q[3],first=!R.a[i];R.a[i]=1;
+ if(c){ if(first){R.ok++;S.ok[K(i)]=1} delete S.hard[K(i)]; playSound('success'); }
+ else{ S.hard[K(i)]=1; if(first){R.w.push(i);R.q.push(i)} playSound('error'); }
+ save();
+ document.querySelectorAll(".opt").forEach((b,j)=>{b.disabled=true;b.classList.remove("sel");if(j==q[3])b.classList.add("good");else if(j==sel)b.classList.add("bad")});
+ const t=c?"<h3>Dobrze! 🌸</h3>":"<h3>Jeszcze nie. Głowa do góry, tak się uczymy! 💕</h3><p>Wybrałaś: <b>"+q[2][sel]+"</b></p><p>Poprawna odpowiedź: <b>"+q[2][q[3]]+"</b></p>";
+ $("f").innerHTML='<div class="fb '+(c?"ok":"no")+'">'+t+"<p><b>Dlaczego?</b> "+q[4]+"</p>"+(c||!first?"":"<p>To pytanie wróci na końcu, żeby sobie je przypomnieć.</p>")+
+ '<button class="s" onclick="say(Q['+i+'][4])">🔊 Przeczytaj wyjaśnienie</button></div><button class="b go" onclick="nxt()">Dalej</button>';
+ $("f").scrollIntoView({block:"nearest"})}
+function nxt(){R.p++;R.p<R.q.length?ask():end()}
+function end(){
+ let h='<h2>Koniec! 🌟</h2><p>Za pierwszym razem poprawnie: <b>'+R.ok+" z "+R.n+".</b></p>";
+ h+=R.w.length?"<h3>Do powtórzenia</h3>"+R.w.map(i=>'<div class="fb no"><p><b>'+Q[i][1]+"</b></p><p>Poprawnie: <b>"+Q[i][2][Q[i][3]]+"</b></p><p>"+Q[i][4]+"</p></div>").join(""):"<p>Brak pomyłek. Jesteś wspaniała!</p>";
+ $("app").innerHTML=h+btn("Wróć do menu","menu()");window.scrollTo(0,0)}
+fs(0);menu();
+</script></body></html>
